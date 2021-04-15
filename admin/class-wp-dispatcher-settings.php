@@ -172,7 +172,7 @@ class Wp_Dispatcher_Settings {
 
 	public function default_dispatcher_options(){
 		$defaults = array(
-			'expires_after'		=>	48,
+			'expires_after'		=>	3600, // one hour
 			'url_resolver'		=>	'resolve'
 		);
 
@@ -229,7 +229,7 @@ class Wp_Dispatcher_Settings {
 	public function expires_after_callback($args){
 		$options = get_option( 'wp_dispatcher_options' );
 
-		$html = '<input class="small-text"  type="number" min="1" max="999" id="expire_after" name="wp_dispatcher_options[expires_after]" value="' . $options['expires_after'] . '" /> hours';
+		$html = '<input id="expire_after" name="wp_dispatcher_options[expires_after]" value="' . $options['expires_after'] . '" style="width: 15%;"/> seconds';
 		$html .= '<br><br><i>&nbsp;'  . $args[0] . '</i>';
 		echo $html;
 	}

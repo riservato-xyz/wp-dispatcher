@@ -75,10 +75,9 @@ class Wp_Dispatcher_Shortcode {
 			$hash = hash('sha256', current_time( 'mysql' ).$upload->filename);
 
 			$options = get_option( 'wp_dispatcher_options' );
-			$expiration_hours = $options['expires_after'];
 			
 			$created = current_time( 'mysql' );
-			$expiration_time = $expiration_hours * 60 * 60; // 24hours
+			$expiration_time = $options['expires_after'];
 			$expires = date( 'Y-m-d H:i:s', strtotime($created) + $expiration_time );
 
 			//	3. insert into database
